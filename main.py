@@ -51,9 +51,11 @@ def generate_package_file(args):
         """Given a lib directory, generate a string containing linker commands"""
         lib_string = ""
         libs_set = set()
-        file_extensions = [".dylib", ".so"]
+        file_extensions = [".dylib", ".so", ".a"]
         file_suffix = "lib"
 
+
+        # Look at all the files in the library directory
         for root, dirs, filenames in os.walk(lib_dir):
             for fname in filenames:
                 extension = os.path.splitext(fname)[1]
@@ -66,13 +68,15 @@ def generate_package_file(args):
                 lib_string += " " + libname
         
         return lib_string
+
+    # Create a dictionary to store the package info (name, description, libs, etc.)
     pkg_object = collections.OrderedDict() 
     pkg_object['#'] = " Package Information for pkg-config"
-    if args.interactive:
-        print('To skip any of these prompts, simply press enter', file=sys.stderr)
-   
 
     # Use input from user or command line options
+    if args.interactive:
+        print('To skip any of these prompts, simply press enter', file=sys.stderr)
+
     prefix = (args.pkg_prefix == "" and args.interactive) and input('Prefix (e.g. /usr/local/Cellar/boost/1.60.0_2): ')  or args.pkg_prefix
     pkg_name = (args.pkg_name == "" and args.interactive) and input('Package name (e.g. Boost): ') or args.pkg_name
     description = (args.pkg_description == "" and args.interactive) and input("Package description: " ) or args.pkg_description
@@ -91,9 +95,8 @@ def generate_package_file(args):
 
     print('', file=sys.stderr)
 
-    f = None
-
     # Print to stdout or to an output file (extension has to be .pc)
+    f = None
     if args.output_file is not "":
         path = args.output_file
         while not path.endswith('.pc'):
