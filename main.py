@@ -90,7 +90,7 @@ def generate_package_file(args):
     pkg_object['Name: '] = pkg_name 
     pkg_object['Description: '] = description 
     pkg_object['Version: '] = version 
-    pkg_object['Libs: '] = generate_libs_string(args.lib_dir)
+    pkg_object['Libs: '] = '-L${exec_prefix}/lib ' + generate_libs_string(args.lib_dir)
     pkg_object['Cflags: '] = "-I${includedir_old} -I${includedir_new}" 
 
     print('', file=sys.stderr)

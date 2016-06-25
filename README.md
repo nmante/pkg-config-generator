@@ -23,6 +23,12 @@ Provide info directly via command line. Here we provide the name, version and pr
 
 	python main.py -n Boost -v 1.60.0 -p /usr/local/Cellar/boost/1.60.0_2 -o boost.pc
 
+We can also redirect the output to a file.
+
+	python main.py -n Boost -p /usr/local/Cellar/boost/1.60.0_2 -v 1.60.0 /usr/local/Cellar/boost/1.60.0_2 -d "Boost is awesome" > boost.pc
+
+The paths used in these examples exist on my machine. You'll have to determine where these libraries exist on your own machine.
+
 Once you have a .pc file, you should place it in the pkg-config path. One standard path is this directory. Check it to see if there are other .pc files there.  
 
 	/usr/local/lib/pkgconfig/

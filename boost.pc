@@ -1,0 +1,13 @@
+# Package Information for pkg-config
+
+prefix=/usr/local/Cellar/boost/1.60.0_2
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir_old=${prefix}/include/boost
+includedir_new=${prefix}/include
+
+Name: Boost
+Description: Boost is awesome
+Version: 1.60.0
+Libs: -L${exec_prefix}/lib  -lboost_prg_exec_monitor-mt -lboost_math_c99f-mt -lboost_unit_test_framework-mt -lboost_container-mt -lboost_log_setup -lboost_math_tr1l -lboost_graph-mt -lboost_wserialization-mt -lboost_log-mt -lboost_math_c99f -lboost_type_erasure -lboost_signals-mt -lboost_test_exec_monitor -lboost_filesystem -lboost_thread-mt -lboost_math_tr1f-mt -lboost_date_time -lboost_timer -lboost_math_tr1f -lboost_test_exec_monitor-mt -lboost_container -lboost_math_tr1 -lboost_type_erasure-mt -lboost_program_options-mt -lboost_graph -lboost_log_setup-mt -lboost_random -lboost_system -lboost_system-mt -lboost_locale-mt -lboost_wserialization -lboost_regex -lboost_exception -lboost_timer-mt -lboost_signals -lboost_filesystem-mt -lboost_math_c99-mt -lboost_math_tr1-mt -lboost_serialization-mt -lboost_serialization -lboost_prg_exec_monitor -lboost_exception-mt -lboost_coroutine -lboost_math_c99 -lboost_iostreams-mt -lboost_random-mt -lboost_program_options -lboost_atomic-mt -lboost_date_time-mt -lboost_math_c99l -lboost_math_tr1l-mt -lboost_context-mt -lboost_regex-mt -lboost_coroutine-mt -lboost_log -lboost_chrono-mt -lboost_wave-mt -lboost_iostreams -lboost_chrono -lboost_unit_test_framework -lboost_math_c99l-mt
+Cflags: -I${includedir_old} -I${includedir_new}
