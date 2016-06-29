@@ -59,14 +59,23 @@ def generate_package_file(args):
         for root, dirs, filenames in os.walk(lib_dir):
             for fname in filenames:
                 extension = os.path.splitext(fname)[1]
-                if fname.startswith(file_suffix) and extension in file_extensions:
+                #  and
+                if extension in file_extensions:
                     curr_linker_command = fname.replace(extension, "") 
-                    curr_linker_command = curr_linker_command.replace(file_suffix, "-l")
+
+                    if fname.startswith(file_suffix):
+                        curr_linker_command = curr_linker_command.replace(file_suffix, "-l")
+                    else:
+                        curr_linker_command = "-l" + curr_linker_command 
+
                     libs_set.add(curr_linker_command)
 
-            for libname in libs_set:
-                lib_string += " " + libname
-        
+
+        for libname in libs_set:
+            lib_string += " " + libname
+
+        print(libs_set)        
+        print(len(libs_set))
         return lib_string
 
     # Create a dictionary to store the package info (name, description, libs, etc.)
@@ -105,6 +114,7 @@ def generate_package_file(args):
         f = open(path, 'w') 
     else:
         f = sys.stdout
+    
     for key, value in pkg_object.items():
         if key == 'prefix=' or key == 'Name: ':
             print('', file=f)
