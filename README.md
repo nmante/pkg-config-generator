@@ -1,6 +1,6 @@
-#Package Config file generator
+# Package Config file generator
 
-##Overview
+## Overview
 
 This is a simple python (2 or 3) script for generating package config (`pkg-config` or `.pc`) files.  Feel free to adapt it to your needs/fork it. 
 
@@ -13,7 +13,7 @@ What does it do?
 Provide it a directory with libraries (.so, .dylib, .etc) and it will generate linker commands. Try it out in the test directory to see it how it works.
 
 
-##Example use
+## Example use
 
 Use the interactive mode for a text prompt. There are dummy lib files in the `test_libs` directory (not real libraries, just for demonstration). 
 
@@ -33,7 +33,8 @@ Once you have a .pc file, you should place it in the pkg-config path. One standa
 
 	/usr/local/lib/pkgconfig/
 
-##Usage
+## Usage
+
 	usage: python main.py [-h] [-i] [-n PKG_NAME] [-v PKG_VERSION] [-p PKG_PREFIX]
 		       [-d PKG_DESCRIPTION] [-o OUTPUT_FILE]
 		       lib_dir
